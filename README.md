@@ -1,23 +1,17 @@
 
 ## Run without Docker
- 	`npm install`
- 	`npm start`
+- Install dependencies
+ 	   `npm install`
+
+- Run the app
+ 	   `npm start`
 
 
 ## Run with Docker
-    - Build docker image: 
- 		     `docker build -t node-api .`
-    - Create/Run the docker container: 
- 		     `docker run -d --name nodeapi -p 8500:8500 node-api 
-## Run without Docker
- 	`npm install`
- 	`npm start`
-
-
-## Run with Docker
-- Build docker image: 
+ - Build docker image: 
  		 `docker build -t node-api .`
-- Create/Run the docker container: 
+    
+ - Create/Run the docker container: 
  	     `docker run -d --name nodeapi -p 8500:8500 node-api`
 
 ## Verifying
