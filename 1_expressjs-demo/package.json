@@ -1,0 +1,27 @@
+{
+  "name": "expressjs-demo",
+  "version": "1.0.0",
+  "description": "Building APIs using ExpressJs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mbzama/docker-training-nodejs.git"
+  },
+  "keywords": [
+    "nodejs",
+    "expressjs"
+  ],
+  "author": "Zama",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mbzama/docker-training-nodejs/issues"
+  },
+  "homepage": "https://github.com/mbzama/docker-training-nodejs#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1"
+  }
+}
