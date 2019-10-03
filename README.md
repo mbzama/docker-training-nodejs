@@ -1,3 +1,6 @@
+## Nodejs Installation
+ `sudo apt install nodejs`
+
 
 ## Run without Docker
 - Install dependencies
