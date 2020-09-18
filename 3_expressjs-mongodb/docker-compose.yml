@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+   api:
+     image: expressjs-mongo
+     build: .
+     ports:
+        - 3002:3000
+     depends_on:
+        - mongodb
+     links:
+        - mongodb
+
+   mongodb:
+      image: mongo
+      ports:
+        - 27017:27017
+      expose:
+        - 27017
+      
