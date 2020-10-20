@@ -6,13 +6,6 @@ const router = express.Router();
 // App Modules
 const User = require("../Models/User");
 
-router.post("/users", (req, res, next) => {
-  const { email, name } = req.body;
-  const user = new User(name, email);
-  res.json(user);
-});
-
-
 /**
  * @swagger
  * tags:
@@ -20,7 +13,7 @@ router.post("/users", (req, res, next) => {
  *   description: User management
  */
 
-/**
+ /**
  * @swagger
  * path:
  *  /users/:
@@ -36,6 +29,29 @@ router.post("/users", (req, res, next) => {
  *      responses:
  *        "200":
  *          description: A user schema
+ *          content:
+ *            application/json:
+ *              schema:
+ *                $ref: '#/components/schemas/User'
+ */
+router.post("/users", (req, res, next) => {
+  const { email, name } = req.body;
+  const user = new User(name, email);
+  res.json(user);
+});
+
+
+
+/**
+ * @swagger
+ * path:
+ *  /users/:
+ *    get:
+ *      summary: Get User list
+ *      tags: [Users]
+ *      responses:
+ *        "200":
+ *          description: User List
  *          content:
  *            application/json:
  *              schema:

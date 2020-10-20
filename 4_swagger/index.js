@@ -24,10 +24,11 @@ const options = {
       openapi: "3.0.0",
       servers: [
         {
-          url: "http://localhost:3000/api/v1"
+          url: "https://swaggerdemo2.zealtolearn.in/api/v1"
         } 
       ]
     },
+    schemes: ["http", "https"],
     apis: ["./Models/*", "./Routes/*"]
   };
  const swaggerSpec = swaggerJsdoc(options);
