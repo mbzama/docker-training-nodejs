@@ -1,4 +1,5 @@
 var express = require('express');
+
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -14,9 +15,15 @@ var users = require('./routes/users');
 var products = require('./routes/products');
 var app = express();
 
+//Swagger Integration
+const swaggerUi = require('swagger-ui-express');
+const swaggerJsdoc = require("swagger-jsdoc");
+
+
+
 mongoose.Promise = global.Promise;
 
-mongoose.connect('mongodb://mongodb/product', {useNewUrlParser: true, useFindAndModify: false })
+mongoose.connect('mongodb://localhost/product', {useNewUrlParser: true, useFindAndModify: false })
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 
@@ -24,8 +31,6 @@ mongoose.connect('mongodb://mongodb/product', {useNewUrlParser: true, useFindAnd
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'true'}));
@@ -38,6 +43,7 @@ app.use(cors());
 app.use('/', index);
 app.use('/users', users);
 app.use('/api/v1/products', products);
+
 
 var Category = app.resource = restful.model('category', mongoose.Schema({
   cat_name: String,

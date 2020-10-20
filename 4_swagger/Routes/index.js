@@ -44,6 +44,7 @@ router.post("/users", (req, res, next) => {
 router.get("/users", (req, res, next) => {
   const userOne = new User("Alexander", "fake@gmail.com");
   const userTwo = new User("Ryan", "fakeagain@gmail.com");
+  console.log('/users: '+new Date());
   res.json({ userOne, userTwo });
 });
 
