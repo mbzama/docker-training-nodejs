@@ -30,9 +30,17 @@ const options = {
     },
     apis: ["./Models/*", "./Routes/*"]
   };
-  const specs = swaggerJsdoc(options);
- app.use("/api-docs", swaggerUi.serve);
- app.get("/api-docs",swaggerUi.setup(specs, {explorer: true}));
+ const swaggerSpec = swaggerJsdoc(options);
+
+//Provides Web page with 'Try Out' feature. Can be used by developers for testing the endpoints.
+app.use("/api-docs", swaggerUi.serve);
+app.get("/api-docs",swaggerUi.setup(swaggerSpec, {explorer: true}));
+
+//Provides Openapi specification in JSON format. Can be used to provision Azure APIM service.
+app.get('/api-docs.json', (req, res) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(swaggerSpec);
+});
 
   
 app.listen(3000, () => console.log(`Swagger That API listening on port 3000!`));
