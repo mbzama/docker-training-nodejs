@@ -6,65 +6,18 @@ const router = express.Router();
 // App Modules
 const User = require("../Models/User");
 
-/**
- * @swagger
- * tags:
- *   name: Users
- *   description: User management
- */
-
- /**
- * @swagger
- * path:
- *  /users/:
- *    post:
- *      summary: Create a new user
- *      tags: [Users]
- *      requestBody:
- *        required: true
- *        content:
- *          application/json:
- *            schema:
- *              $ref: '#/definitions/User'
- *      responses:
- *        "200":
- *          description: A user schema
- *          content:
- *            application/json:
- *              schema:
- *                $ref: '#/definitions/User'
- */
 router.post("/users", (req, res, next) => {
   const { email, name } = req.body;
   const user = new User(name, email);
   res.json(user);
 });
 
-
-
-/**
- * @swagger
- * path:
- *  /users/:
- *    get:
- *      summary: Get User list
- *      tags: [Users]
- *      responses:
- *        "200":
- *          description: User List
- *          content:
- *            application/json:
- *              schema:
- *                $ref: '#/definitions/User'
- */
 router.get("/users", (req, res, next) => {
   const userOne = new User("Alexander", "fake@gmail.com");
   const userTwo = new User("Ryan", "fakeagain@gmail.com");
   console.log('/users: '+new Date());
   res.json({ userOne, userTwo });
 });
-
-
 
 // catch 404 and forward to error handler
 router.use(function(req, res, next) {

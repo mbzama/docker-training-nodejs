@@ -1,0 +1,46 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: title
+  description: description
+  termsOfService: terms
+  contact:
+    name: "Swagger demo"
+    url:  "https://swaggerdemo2.zealtolearn.in/api-docs/"
+    email: "zamamb@gmail.com"
+  license:
+    name: MIT
+    url: http://opensource.org/licenses/MIT
+
+basePath: /api/v1/
+schemes:
+  - http
+  - https
+paths:
+  /users:
+    get:
+      operationId: GetUsers
+      responses:
+        '200':
+          description: User List
+          schema:
+            type: array
+            items:
+               $ref: '#/definitions/User'    
+      produces:
+        - application/vnd.collection+json
+        
+definitions:
+  User:
+    properties:
+      name:
+        type: string
+      email:
+        type: string
+        description: 'Email for the user, needs to be unique.'
+responses: {}
+parameters: {}
+securityDefinitions: {}
+tags:
+  - name: Users
+    description: User management

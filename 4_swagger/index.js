@@ -19,30 +19,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/v1", routes);
 
 // Swagger 2.0
-// swagger definition
-var swaggerDefinition = {
-  "swagger": "2.0",
-  "basePath": '/api/v1/',
-  "schemes": ["http", "https"]
-};
-
-// options for the swagger docs
-var options = {
-  swaggerDefinition: swaggerDefinition,
-  apis: ['./Routes/*.js','./Models/*.js']
-};
- 
-
- const swaggerSpec = swaggerJsdoc(options);
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
 
 //Provides Web page with 'Try Out' feature. Can be used by developers for testing the endpoints.
 app.use("/api-docs", swaggerUi.serve);
-app.get("/api-docs",swaggerUi.setup(swaggerSpec, {explorer: true}));
+app.get("/api-docs",swaggerUi.setup(swaggerDocument, {explorer: true}));
 
 //Provides Openapi specification in JSON format. Can be used to provision Azure APIM service.
 app.get('/api-docs.json', (req, res) => {
-  res.setHeader('Content-Type', 'application/json');
-  res.send(swaggerSpec);
+    res.setHeader('Content-Type', 'application/json');
 });
 
   
