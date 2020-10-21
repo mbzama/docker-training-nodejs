@@ -25,14 +25,14 @@ const User = require("../Models/User");
  *        content:
  *          application/json:
  *            schema:
- *              $ref: '#/components/schemas/User'
+ *              $ref: '#/definitions/User'
  *      responses:
  *        "200":
  *          description: A user schema
  *          content:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/User'
+ *                $ref: '#/definitions/User'
  */
 router.post("/users", (req, res, next) => {
   const { email, name } = req.body;
@@ -55,7 +55,7 @@ router.post("/users", (req, res, next) => {
  *          content:
  *            application/json:
  *              schema:
- *                $ref: '#/components/schemas/User'
+ *                $ref: '#/definitions/User'
  */
 router.get("/users", (req, res, next) => {
   const userOne = new User("Alexander", "fake@gmail.com");

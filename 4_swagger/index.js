@@ -18,19 +18,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // include routes
 app.use("/api/v1", routes);
 
-// Swagger set up
-const options = {
-    swaggerDefinition: {
-      openapi: "3.0.0",
-      servers: [
-        {
-          url: "https://swaggerdemo2.zealtolearn.in/api/v1"
-        } 
-      ]
-    },
-    schemes: ["http", "https"],
-    apis: ["./Models/*", "./Routes/*"]
-  };
+// Swagger 2.0
+// swagger definition
+var swaggerDefinition = {
+  "swagger": "2.0",
+  "basePath": '/api/v1/',
+  "schemes": ["http", "https"]
+};
+
+// options for the swagger docs
+var options = {
+  swaggerDefinition: swaggerDefinition,
+  apis: ['./Routes/*.js','./Models/*.js']
+};
+ 
+
  const swaggerSpec = swaggerJsdoc(options);
 
 //Provides Web page with 'Try Out' feature. Can be used by developers for testing the endpoints.
